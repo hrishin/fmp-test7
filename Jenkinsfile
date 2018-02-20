@@ -18,6 +18,8 @@ mavenNode {
 
       stage('Build Release'){
         mavenCanaryRelease {
+          echo "maven :::"
+          sh "mvn clean -B -e -U deploy -Dmaven.test.skip=${skipTests} -P openshift"
           version = canaryVersion
         }
         //stash deployment manifests
